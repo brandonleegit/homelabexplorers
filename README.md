@@ -53,8 +53,7 @@ Open a pull request or start a discussion—we’d love to hear from you.
 
 Follow along, get help, and share what you're working on:
 
-- 💬 [Community Forum](https://yourcommunityforum.link)
-- 🧵 [#homelabexplorers on Mastodon/Discord](https://yourchatlink.link)
+- 🧵 [#homelabexplorers on Skool](https://www.skool.com/homelabexplorers)
 - 📹 [YouTube: VirtualizationHowto](https://www.youtube.com/@VirtualizationHowto)
 
 ---
