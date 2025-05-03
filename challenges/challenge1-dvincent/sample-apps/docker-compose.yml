@@ -1,0 +1,64 @@
+version: '3'
+services:
+  # A simple NGINX hello world app
+  hello-world:
+    image: nginxdemos/hello
+    container_name: hello-world
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    networks:
+      - shared_network
+
+  # A WordPress blog
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      WORDPRESS_DB_HOST: wordpress-db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress_password
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - wordpress-db
+    networks:
+      - shared_network
+
+  # MySQL database for WordPress
+  wordpress-db:
+    image: mysql:5.7
+    container_name: wordpress-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - wordpress_db_data:/var/lib/mysql
+    networks:
+      - shared_network
+
+  # A simple dashboard app
+  dashboard:
+    image: jwilder/whoami
+    container_name: dashboard
+    restart: unless-stopped
+    ports:
+      - "8083:8000"
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external: true
+    name: shared_network
+
+volumes:
+  wordpress_data:
+  wordpress_db_data:
