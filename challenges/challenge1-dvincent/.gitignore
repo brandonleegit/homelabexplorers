@@ -1,0 +1,18 @@
+# Nginx Proxy Manager data directories
+nginx-proxy-manager/data/
+nginx-proxy-manager/letsencrypt/
+nginx-proxy-manager/mysql/
+
+# Sample apps data directories
+sample-apps/wordpress_data/
+sample-apps/wordpress_db_data/
+
+# Log files
+*.log
+
+# Database files
+*.sqlite
+*.db
+
+# Environment files
+.env
