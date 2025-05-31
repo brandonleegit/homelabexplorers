@@ -1,0 +1,21 @@
+---
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - URL= mysubdomain.duckdns.org #domain.com
+      - VALIDATION=dns #dns challenge (http for http challlenge)
+      - SUBDOMAINS=wildcard #optional
+      - DNSPLUGIN=duckdns #or cloudflare or your dns
+    volumes:
+      - ./config:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
